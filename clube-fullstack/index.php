@@ -1,17 +1,24 @@
 <?php
 
+header("Content-type: application/json");
+
 require "vendor/autoload.php";
 
-use app\classes\{Crud, Login};
+use app\classes\{Crud, Login, Book, Abajur};
 
-$crud = new Crud;
+$book = new Book();
 
-$login = new Login;
+$book->name = "Livro";
+$book->description = "Um livro cheio de histórias interessantes";
+$book->author = "John Doe";
+$book->pages = 300;
 
-try {
-  echo $login->auth('christian@email.com', '123456');
-} catch (Error $error) {
-  echo 'Error: ' . $error->getMessage();
-} catch (Exception $ex) {
-  echo 'Exception: ' . $ex->getMessage();
-}
+echo json_encode($book);
+
+$abajur = new Abajur;
+
+$abajur->name = "Abajur lindão";
+$abajur->description = "Um abajur bem luminoso";
+$abajur->is_on = true;
+
+echo json_encode($abajur);
