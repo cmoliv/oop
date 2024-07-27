@@ -5,20 +5,12 @@ header("Content-type: application/json");
 require "vendor/autoload.php";
 
 use app\classes\{Crud, Login, Book, Abajur};
+use app\model\{User, Product};
 
-$book = new Book();
+$user = new User();
 
-$book->name = "Livro";
-$book->description = "Um livro cheio de histórias interessantes";
-$book->author = "John Doe";
-$book->pages = 300;
+echo $user->all() . "\n";
 
-echo json_encode($book);
+$product = new Product();
 
-$abajur = new Abajur;
-
-$abajur->name = "Abajur lindão";
-$abajur->description = "Um abajur bem luminoso";
-$abajur->is_on = true;
-
-echo json_encode($abajur);
+echo $product->delete();
