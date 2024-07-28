@@ -7,10 +7,24 @@ require "vendor/autoload.php";
 use app\classes\{Crud, Login, Book, Abajur};
 use app\model\{User, Product};
 
-$user = new User();
+class Template
+{
+  const PATH = "app/views";
 
-echo $user->all() . "\n";
+  public function load()
+  {
+    return static::PATH;
+  }
+}
 
-$product = new Product();
+class Twig extends Template
+{
+  const PATH = "app/views/twig";
 
-echo $product->delete();
+  public function load()
+  {
+    return self::PATH;
+  }
+}
+
+echo (new Twig)->load();
